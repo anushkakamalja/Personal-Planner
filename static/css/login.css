@@ -9,7 +9,7 @@
 }
 
 .left{
-    background-image: url("./Python_project_resources/images/login_bg.jpg");
+    background-image: url("/assets/images/login_bg.jpg");
     background-size: 100% 100vh;
     width: 50%;    
 }
