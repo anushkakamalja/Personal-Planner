@@ -1,0 +1,160 @@
+.full{
+    margin:0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+    font-family:sans-serif;
+}
+
+.left{
+    background-image: url("./Python_project_resources/images/login_bg.jpg");
+    background-size: 100% 100vh;
+    width: 50%;    
+}
+
+.left img{
+    margin: 1%;
+    width: 25%;
+}
+
+.right{
+    width: 50%;
+}
+
+.login-container{
+    width: 100%;
+    float: right;
+    display: flex;
+    flex-direction: column;
+}
+
+.signup{
+    text-align: right;
+    width: 100%;
+    font-size: 1.5rem;
+}
+
+.signup button{
+    text-align: center;   
+    margin: 3% 4%;
+    padding: 0.5rem;
+    background-color: white;
+    border: 1.5px solid #68b7f7;
+    border-radius: 2rem;
+    width: 17%;
+    font-size: 1.5rem;
+}
+
+h2{
+    text-align: center;
+    width: 100%;
+    font-size: 2rem;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-evenly;
+    height: 90%;
+}
+
+.email, .password, .name{
+    display: flex;
+    border: 1px solid #c5c5c5;
+    margin-bottom: 1rem;
+    width: 80%;
+    border-radius: 1rem;
+}
+
+.right img{
+    padding: 12px;
+    /* min-width: 50px; */
+    text-align: center;
+    height: 1.8rem;
+}
+
+input{
+    width: 80%;
+    border-radius: 1rem;
+    margin: 0.2rem;
+    position: relative;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 1.1rem
+}
+
+.login-btn{
+    width: 80%;
+    margin: 1rem;
+    border-radius: 2rem;
+    font-size: 1.5rem;
+    color: white;
+    background-color: #2196f3;
+    border:none;
+    outline: none;
+    padding: 0.5rem;
+    height: 3rem;
+}
+
+.forgot{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 80%;
+}
+
+.forgot a{
+    text-decoration: none;
+    color: #4e4e4e;
+    font-size: 1.1rem;
+}
+
+.strike {
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .strike hr {
+    width: 45%;
+  }
+  
+  .strike p {
+    font-size: 1.5rem;
+    padding: 1rem;
+    /* font-weight: 600; */
+    color: #666666;
+  }
+
+.google {
+    width: 80%;
+    margin-top: 0.5rem;
+    
+    /* transition: 0.5s; */
+}
+
+.google a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: #000;
+    font-weight: 700;
+    border-radius: 2rem;
+    border: 2px solid #b7b7b7; */
+    outline: none;  
+    background: #fff;
+    }
+  
+.google img {
+    max-width: 1.5rem;
+    max-height: 1.5rem;
+    margin-right: 0.5rem;
+}
+  
