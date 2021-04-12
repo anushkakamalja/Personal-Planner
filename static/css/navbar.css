@@ -5,11 +5,11 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-header {
-  /* height: 10%; */
+.header {
+  height: 10%;
   display: flex;
   width: 98%;
-  position: fixed;
+  /* position: fixed; */
   background: rgba(0, 0, 0, 0);
   justify-content: space-between;
   align-items: center;
