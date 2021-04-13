@@ -4,15 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% block stylesheet %}
-      
-    {% endblock stylesheet %}
+    {% block header %} {% endblock header %} {% block stylesheet %} {% endblock
+    stylesheet %}
     <link rel="stylesheet" href="/static/css/navbar.css" />
-    {% block header %} {% endblock header %}
     <title>{% block title %} {% endblock title %}</title>
   </head>
   <body>
-    <div class='header'>
+    <div class="navbar-header">
       <div class="navbar-logo">
         <a href="{{url_for('home')}}"
           ><img
@@ -45,9 +43,9 @@
           </div>
         </div>
       </div>
-      <a onclick="myFunction()" class="bars">
+      <!-- <a onclick="myFunction()" class="bars">
         <img src="/static/assets/icons/menu_48px.svg" alt="" />
-      </a>
+      </a> -->
     </div>
 
     {% block content %} {% endblock content %}
