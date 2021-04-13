@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block stylesheet %}
+      
+    {% endblock stylesheet %}
+    <link rel="stylesheet" href="/static/css/navbar.css" />
+    {% block header %} {% endblock header %}
+    <title>{% block title %} {% endblock title %}</title>
+  </head>
+  <body>
+    <div class='header'>
+      <div class="navbar-logo">
+        <a href="{{url_for('home')}}"
+          ><img
+            src="{{url_for('static',filename='/assets/icons/logo.png')}}"
+            alt=""
+        /></a>
+      </div>
+      <div class="nav-menu-container">
+        <div class="nav-hide nav-searchbar">
+          <img
+            src="{{url_for('static',filename='/assets/icons/search_48px.svg')}}"
+            alt=""
+          />
+          <input type="text" name="Search" id="" placeholder="Search..." />
+        </div>
+        <div class="nav-hide navbar-links">
+          <div class="navbar-items navbar-account">
+            <img
+              src="{{url_for('static',filename='assets/icons/test_account_48px.svg')}}"
+              alt=""
+            />
+            <a href="#">My Account</a>
+          </div>
+          <div class="navbar-items navbar-logout">
+            <img
+              src="{{url_for('static',filename='/assets/icons/exit_48px.svg')}}"
+              alt=""
+            />
+            <a href="#">Logout</a>
+          </div>
+        </div>
+      </div>
+      <a onclick="myFunction()" class="bars">
+        <img src="/static/assets/icons/menu_48px.svg" alt="" />
+      </a>
+    </div>
+
+    {% block content %} {% endblock content %}
+  </body>
+</html>
