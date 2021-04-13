@@ -1,6 +1,7 @@
-.full {
+html,body{
   margin: 0;
   left: 0;
+  height: 100%;
   background-image: url('/static/assets/images/my_account_bg.jpg');
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -26,6 +27,7 @@
   flex-direction: row;
   justify-content: space-around;
   width: 30%;
+  /* flex-wrap: wrap; */
 }
 
 .dashboard,
@@ -34,10 +36,12 @@
   width: 10%;
   align-items: center;
   justify-content: space-around;
+  /* padding: 1rem; */
 }
 
 .dashboard img {
   margin: 0 10%;
+  height: auto;
 }
 
 .logout img {
@@ -53,6 +57,7 @@
 }
 
 h1 {
+    margin-top: 0;
   text-align: center;
   font-size: 3rem;
 }
@@ -60,20 +65,21 @@ h1 {
 .edit {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   background-color: #e9eae5;
   border-radius: 4rem;
-  padding: 1% 5%;
+  padding: 0% 5% 1% 5%;
   width: 70%;
-  margin: auto;
+  margin: 0% auto;
   position: center;
-  box-shadow: 5px 5px rgba(181, 199, 211, 0.5);
+  box-shadow: 5px 5px 5px 5px rgba(181, 199, 211, 0.6);
 }
 
 .title {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 50%;
+  width: auto;
   margin: 0 auto;
   font-size: 1.4rem;
 }
@@ -96,7 +102,7 @@ form {
 .name,
 .email,
 .password {
-  height: 3%;
+  /* height: 3%; */
   margin: 2% 2% 1% 2%;
   display: flex;
   flex-direction: row;
@@ -106,6 +112,7 @@ form {
 label {
   font-size: 2rem;
   width: 40%;
+  /* text-align: center; */
 }
 
 input {
@@ -136,4 +143,81 @@ input {
   outline: none;
   border-radius: 2rem;
   color: white;
+}
+
+@media only screen and (max-width: 870px) {
+    .home{
+        width: 50%;
+    }
+    .logo img{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 660px){
+    .body{
+       display: flex;
+    }
+    .edit{
+        display: flex;
+        flex-direction: column;
+        height: 50%;
+        /* width: auto; */
+    }
+    .details{
+        padding-top:0 ;
+        padding-bottom: 0;
+    }
+    .done{
+        margin-top: 2%;
+    }
+    .logo img{
+        width: 100%;
+    }
+    label{
+        font-size: 1.5rem;
+    }
+
+}
+
+@media only screen and (max-width: 520px){
+    .header{
+        justify-content: space-between;
+    }
+    .dashboard, .logout{
+        width: 80%;
+        justify-content: right;
+        margin-right: 0%;
+        padding-right: 0%;
+    }
+
+    .dashboard img {
+        width: 20%;
+        padding-right: 0%;
+        margin-right: 0%;
+    }
+
+    .logout img{
+        width: 30%;
+        padding-right: 0%;
+        margin-right: 0%;
+    }
+
+    .home a{
+        margin-left: 4%;
+        padding-left: 0%;
+    }
+
+    .home{
+        flex-direction: column;
+    }
+    .logo img{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 410px){
+    .logo img{
+        width: 100%;
+    }
 }
