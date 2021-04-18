@@ -1,0 +1,67 @@
+{% extends 'base.html' %} {% block stylesheet %}
+<link rel="stylesheet" href="/static/css/task.css" />
+{% endblock stylesheet %} {% block title %} My Tasks {% endblock title %} {%
+block content %}
+<h1 class="taskpage-header">{{project}}</h1>
+
+{% for todo in allTodo %}
+<button class="createnew tasklist">
+  <span>
+    <img
+      class="add-icon task-icon"
+      src="/static/assets/icons/round_50px.svg"
+      alt=""
+    /><span class="btn-text">{{todo.title}}</span></span
+  >
+  <span class="btn-wrapper">
+    <div class="btn">
+      <img src="/static/assets/icons/trash_48px.svg" alt="" />
+      <a href="/delete/{{project}}/{{todo.sno}}">Delete</a>
+    </div>
+    <div class="btn">
+      <img src="/static/assets/icons/edit_48px.svg" alt="" />
+      <a>Update</a>
+    </div>
+    <!-- <div class="btn">
+      <img src="/static/assets/icons/schedule_48px.svg" alt="" />
+      <a>Schedule</a>
+    </div> -->
+  </span>
+</button>
+{% endfor %}
+
+<button
+  class="createnew"
+  onclick="document.getElementById('id01').style.display='block'"
+>
+  <span>
+    <img
+      class="add-icon"
+      src="/static/assets/icons/add_48px.svg"
+      alt="" /></span
+  >Create a new task
+</button>
+
+<div id="id01" class="addtaskwindow">
+  <button
+    onclick="document.getElementById('id01').style.display='none'"
+    class="modal-close"
+  >
+    &times;
+  </button>
+  <h2 class="modal-header">Add New Task</h2>
+  <div>
+    <form action="/tasks/{{project}}" method="POST">
+      <input type="text" name="title" id="" class="taskname-holder" />
+      <br />
+      <input
+        type="submit"
+        name=""
+        id=""
+        value="Add Task"
+        class="taskname-submit"
+      />
+    </form>
+  </div>
+</div>
+{% endblock content %}
