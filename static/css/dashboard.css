@@ -22,11 +22,13 @@ body{
   border-radius: 20px;
   background-color: white;
   display: inline-grid;
-  margin-top: 230px;
+  margin-top: 170px;
   font-size: 20px;
   width: 20rem;
-  height: 15rem;
+  height: 16rem;
   box-shadow: 10px 10px 10px #888888;
+  padding-top: -10rem;
+  
 }
 
 .today-btn {
@@ -62,18 +64,19 @@ body{
   text-align: center;
   border-radius: 40rem;
   font-size: 20px;
+   cursor: pointer;
 }
-img {
-  height: 5rem;
-  width: 7rem;
+img{
+  height: 5.2rem;
+  width: 10rem;
   margin: auto;
-  margin-top: -10px;
+  margin-top: px;
 }
 
 h4 {
   text-align: center;
   font-size: 40px;
-  top: 10rem;
+  top: 6rem;
   position: relative;
 }
 
@@ -120,6 +123,7 @@ h4 {
   display: block;
   margin-left: 174px;
   margin-top: 58px;
+  height: 1.5rem;
 }
 
 .modal-close {
@@ -247,14 +251,14 @@ label {
 }
 @media only screen and (max-width: 615px) {
   .box .box2 li {
-    margin: 6rem 9rem;
+    margin: -12rem 9rem;
     margin-top: 170px;
     width: 17rem;
   }
 }
 @media only screen and (max-width: 492px) {
   .box .box2 li {
-    margin: 6rem 6rem;
+    margin: -12rem 6rem;
     margin-top: 170px;
     width: 17rem;
   }
@@ -270,7 +274,7 @@ label {
 
 @media only screen and (max-width: 400px) {
   .box .box2 li {
-    margin: 6rem 2rem;
+    margin: -12rem 3rem;
     margin-top: 170px;
     width: 17rem;
   }
@@ -286,3 +290,89 @@ label {
     margin-left: 100px;
   }
 }
+
+.navbar-header {
+  height: 10vh;
+  display: flex;
+  width: 98%;
+  /* position: fixed; */
+  background: rgba(0, 0, 0, 0);
+  justify-content: space-between;
+  align-items: center;
+  margin: 1%;
+  overflow: hidden;
+}
+
+.navbar-logo {
+  align-self: center;
+  margin-right: 2rem;
+  
+}
+
+.nav-searchbar {
+  display: flex;
+  align-items: center;
+}
+
+.nav-searchbar input {
+  font-size: 1.25rem;
+  width: 40vw;
+  height: 3rem;
+  border: 1px solid grey;
+  border-radius: 100px;
+  box-shadow: none;
+  outline: none;
+  padding: 1rem;
+  padding-left: 3rem;
+  margin-right: 1rem;
+  margin-top: auto;
+}
+
+.nav-searchbar img {
+  position: absolute;
+  height: 2rem;
+  padding-left: 0.6rem;
+  margin-left: -47px;
+  margin-top: auto;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  padding-right: 2.5vw;
+}
+
+.nav-menu-container {
+  display: flex;
+  justify-content: space-between;
+  /* border: 1px solid red; */
+  width: 85vw;
+}
+
+.navbar-items {
+  padding-right: 2rem;
+  display: flex;
+  margin-left: -62px;
+}
+
+.navbar-items > a {
+  text-decoration: none;
+  color: black;
+  align-self: center;
+  font-size: 1.25rem;
+  /* line-height: 10vh; */
+}
+
+.navbar-items img {
+  height: 2rem;
+  padding-right: 0.5rem;
+  align-content: center;
+  align-self: center;
+  margin-right: -55px;
+}
+
+/* .bar-icon {
+  width: 3rem;
+  height: 3rem;
+  display: none;
+
