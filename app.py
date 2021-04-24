@@ -16,6 +16,12 @@ class Tasks(db.Model):
 def __repr__(self) -> str:
     return f"{self.sno}={self.title}"
 
+class Dashboard(db.Model):
+    sno=db.Column(db.Integer, primary_key=True)
+    title=db.Column(db.String(200), nullable=False)
+
+def __repr__(self) -> str:
+    return f"{self.sno}={self.title}"
 
 @app.route('/')
 def home():
@@ -46,9 +52,19 @@ def tasks(project):
         allTodo=Tasks.query.all()
         return render_template('task.html', project=project, allTodo=allTodo)
 
-@app.route('/dashboard')
+@app.route('/dashboard', methods=['GET','POST'])
 def dashboard():
-    return render_template('dashboard.html')
+    if request.method=='POST':
+        title=request.form['title']    
+        todo=Dashboard(title=title)
+        db.session.add(todo)
+        db.session.commit()
+        allTodo=Dashboard.query.all()
+        return render_template('dashboard.html', allTodo=allTodo)
+    else:
+        allTodo=Dashboard.query.all()
+        return render_template('dashboard.html', allTodo=allTodo)
+     
 
 @app.route('/delete/<project>/<int:sno>')
 def delete(sno,project):
@@ -63,3 +79,5 @@ def delete(sno,project):
 #         db.session.delete(todo)
 #         db.session.commit()
 #         return redirect(url_for('tasks',project=project))
+if __name__=="__main__":
+    app.run(debug=True)

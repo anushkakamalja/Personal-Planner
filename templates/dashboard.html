@@ -8,17 +8,20 @@
 {% block content %}
     <div class="full">
         <h4>PERSONAL DASHBOARD</h4>
-       
-        <div class="box">
+          
+        
+        
+        <div class="box">   
             <div class="box2">
-                
-                
+                {% for todo in alltodo %}
                     <li>
                         
                         <img src="/static/assets/icons/todo_list_48px.svg" alt=""><br>
-                        <button class="today-btn"> Today</button>
+                        <button class="today-btn"> {{todo.title}} </button>
                      
                     </li>
+
+                    {% endfor %}
                     <li>
                         <img src="/static/assets/icons/todo_list_48px.svg" alt=""><br>
                         <button class="inbox-btn"> Inbox</button>
@@ -34,14 +37,20 @@
             </div>
         </div>
     </div>
+
+    <div>
+    <form action="/dashboard" method="POST">
     <div class="modal-bg">
         <div class="modal">
             <h2>NEW PROJECT</h2>
             <label for="name">Name of Project</label>
-            <input type="text" name="name">
-            <button class="modalbtn">Done</button>
+            <input type="text" name="title" id="">
+            <button type="submit" class="modalbtn">Done</button>
             <span class="modal-close">X</span>
         </div>
     </div>
+    </form>
+    </div>
+
         <script src="../static/js/dashboard.js"></script>
 {% endblock content %}     
