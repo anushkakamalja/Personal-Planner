@@ -1,7 +1,6 @@
 {% extends 'base.html' %} {% block stylesheet %}
 <link rel="stylesheet" href="/static/css/task.css" />
-{% endblock stylesheet %} {% block title %} My Tasks {% endblock title %} {%
-block content %}
+{% endblock stylesheet %} {% block title %} My Tasks {% endblock title %} {%block content %}
 <h1 class="taskpage-header">{{project}}</h1>
 
 {% for todo in allTodo %}
