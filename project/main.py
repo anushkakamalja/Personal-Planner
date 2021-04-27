@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, url_for
+from flask import Blueprint, render_template, request, url_for, redirect
 from .models import Dashboard
 from .models import Tasks
 from . import db
@@ -25,7 +25,7 @@ def tasks(project):
         db.session.add(todo)
         db.session.commit()
         allTodo=Tasks.query.all()
-        return redirect(url_for('tasks',project=project))
+        return redirect(url_for('main.tasks',project=project))
     else:
         allTodo=Tasks.query.all()
         return render_template('task.html', project=project, allTodo=allTodo)
@@ -51,4 +51,4 @@ def delete(sno,project):
         todo=Tasks.query.filter_by(sno=sno).first()
         db.session.delete(todo)
         db.session.commit()
-        return redirect(url_for('tasks',project=project))
+        return redirect(url_for('main.tasks',project=project))
