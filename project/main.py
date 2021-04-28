@@ -16,6 +16,10 @@ def index():
 def profile():
     return render_template('profile.html', name=current_user.name)
 
+@main.route('/landing_page')
+def landing_page():
+    return render_template('landing_page.html')
+
 @main.route('/tasks/<project>', methods=['GET','POST'])
 @login_required
 def tasks(project):

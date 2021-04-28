@@ -1,0 +1,129 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family:Arial, Helvetica, sans-serif;
+  }
+  
+  body{
+    background-color:#E9EAE5;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    background-position: center;
+    position: relative;
+  }
+ 
+  /* .btn{
+      height: 50px;
+      width: 120px;
+      margin-left: 320px;
+      font-size: 20px;
+      margin-top: 30px;
+      cursor: pointer;
+      background-color: pink;
+  } */
+  
+
+  .header {
+    width: 100%;
+    height: 77px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* margin: 0.5%; */
+    box-shadow: 10px 10px 10px #888888;
+    margin-left: -4px;
+    background-color: white;
+  }
+  .home {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 30%;
+    /* flex-wrap: wrap; */
+  }
+
+  .home a {
+    font-size: 1.5rem;
+    margin-left: 0px;
+    text-decoration: none;
+    color: black;
+    margin-left: -270px;
+  }
+
+  .Myaccount a{
+      margin-left: -90px;
+  }
+  
+  .dashboard,
+.Myaccount {
+  display: flex;
+  width: 10%;
+  align-items: center;
+  justify-content: space-around;
+  /* padding: 1rem; */
+}
+  
+  .dashboard img {
+    height: 35px;
+    margin: 0 10%;
+    margin-left: -330px;
+  }
+
+  .Myaccount img{
+      height: 35px;
+      margin: 0 10%;
+      margin-left: -215px;
+  }
+
+  .createbtn{
+      height: 37px;
+      width: 200px;
+      margin-top: 19px;
+      background-color: #030047;;
+      color: white;
+      border-radius: 0.5rem;
+      font-size: 20px;
+      margin-left: -82px;
+      cursor: pointer;
+  }
+  .image img{
+    height: 420px;
+    margin-left: 820px;
+    margin-top: 80px;
+  }
+
+  h1{
+    margin-top: -350px;
+    margin-left: 90px;
+    font-size: 50px;
+  }
+  
+  .para{
+    color: #030047;;
+    margin-top: 35px;
+    margin-left: 90px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.startbtn button{
+  height: 57px;
+  width: 185px;
+  background-color: #030047;
+  border: none;
+  margin-top: 40px;
+  margin-left: 90px;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 0.7rem;
+  box-shadow: 6px 6px 6px #888888;
+}
+/* .startimg{
+  height:25px;
+  margin-top: -30px;
+} */
+
+
+  
