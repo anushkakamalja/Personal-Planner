@@ -1,16 +1,18 @@
 {% extends 'base.html' %} {% block stylesheet %}
 <link rel="stylesheet" href="/static/css/task.css" />
-{% endblock stylesheet %} {% block title %} My Tasks {% endblock title %} {%block content %}
+{% endblock stylesheet %} {% block title %} My Tasks {% endblock title %}
+{%block content %}
 <h1 class="taskpage-header">{{project}}</h1>
 
-{% for todo in allTodo %}
+{% for todo in incomplete %}
 <button class="createnew tasklist">
   <span>
-    <img
-      class="add-icon task-icon"
-      src="/static/assets/icons/round_50px.svg"
-      alt=""
-    /><span class="btn-text">{{todo.title}}</span></span
+    <a href="/complete/{{project}}/{{todo.sno}}"
+      ><img
+        class="add-icon task-icon"
+        src="/static/assets/icons/round_50px.svg"
+        alt="" /></a
+    ><span class="btn-text">{{todo.title}}</span></span
   >
   <span class="btn-wrapper">
     <div class="btn">
@@ -30,7 +32,7 @@
 {% endfor %}
 
 <button
-  class="createnew"
+  class="createnew new-create-style"
   onclick="document.getElementById('id01').style.display='block'"
 >
   <span>
@@ -40,6 +42,38 @@
       alt="" /></span
   >Create a new task
 </button>
+
+{% if complete|length>0 %}
+<br>
+<h2 style="text-align: center;">Completed Tasks</h2>
+{% for todo in complete %}
+<button class="createnew tasklist">
+  <span>
+    <a href="/incomplete/{{project}}/{{todo.sno}}"
+      ><img
+        class="add-icon task-icon"
+        src="/static/assets/icons/round_50px.svg"
+        alt="" /></a
+    ><span class="btn-text" style="text-decoration: line-through"
+      >{{todo.title}}</span
+    ></span
+  >
+  <span class="btn-wrapper">
+    <div class="btn">
+      <img src="/static/assets/icons/trash_48px.svg" alt="" />
+      <a href="/delete/{{project}}/{{todo.sno}}">Delete</a>
+    </div>
+    <div class="btn">
+      <img src="/static/assets/icons/edit_48px.svg" alt="" />
+      <a>Update</a>
+    </div>
+    <!-- <div class="btn">
+        <img src="/static/assets/icons/schedule_48px.svg" alt="" />
+        <a>Schedule</a>
+      </div> -->
+  </span>
+</button>
+{% endfor %} {% endif %}
 
 <div id="id01" class="addtaskwindow">
   <button

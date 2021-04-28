@@ -10,6 +10,7 @@ class User(UserMixin, db.Model):
 class Tasks(db.Model):
     sno=db.Column(db.Integer, primary_key=True)
     title=db.Column(db.String(200), nullable=False)
+    complete=db.Column(db.Boolean)
 
 def __repr__(self) -> str:
     return f"{self.sno}={self.title}"

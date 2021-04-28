@@ -25,14 +25,16 @@ def landing_page():
 def tasks(project):
     if request.method=='POST':
         title=request.form['title']
-        todo=Tasks(title=title)
+        todo=Tasks(title=title,complete=False)
         db.session.add(todo)
         db.session.commit()
-        allTodo=Tasks.query.all()
+        # incomplete=Tasks.query.filter_by(complete=False).all()
+        # complete=Tasks.query.filter_by(complete=True).all()
         return redirect(url_for('main.tasks',project=project))
     else:
-        allTodo=Tasks.query.all()
-        return render_template('task.html', project=project, allTodo=allTodo)
+        incomplete=Tasks.query.filter_by(complete=False).all()
+        complete=Tasks.query.filter_by(complete=True).all()
+        return render_template('task.html', project=project, incomplete=incomplete, complete=complete)
 
 @main.route('/dashboard', methods=['GET','POST'])
 @login_required
@@ -56,3 +58,21 @@ def delete(sno,project):
         db.session.delete(todo)
         db.session.commit()
         return redirect(url_for('main.tasks',project=project))
+
+@main.route('/complete/<project>/<int:sno>')
+@login_required
+def complete(sno,project):
+    todo=Tasks.query.filter_by(sno=sno).first()
+    todo.complete=True
+    db.session.commit()
+    return redirect(url_for('main.tasks',project=project))
+    
+
+@main.route('/incomplete/<project>/<int:sno>')
+@login_required
+def incomplete(sno,project):
+    todo=Tasks.query.filter_by(sno=sno).first()
+    todo.complete=False
+    db.session.commit()
+    return redirect(url_for('main.tasks',project=project))
+
