@@ -1,0 +1,21 @@
+{% extends 'base.html' %}   
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/css/updateproject.css">
+{% endblock stylesheet %}
+{% block title %}
+    Update
+{% endblock title %}
+{% block content %}
+<div>
+    <form action="/update/{{todo_list.sno}}" method="POST">
+    <div class="modal-bg">
+        <div class="modal">
+            <h2>Update Project</h2>
+            <label for="name"> Project Name</label>
+            <input type="text" name="title" id="" value="{{todo_list.title}}">
+            <button type="submit" class="modalbtn">Update</button>
+        </div>
+    </div>
+    </form>
+    </div>
+{% endblock content %}    
