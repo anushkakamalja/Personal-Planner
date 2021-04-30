@@ -25,15 +25,15 @@ def landing_page():
 def tasks(project):
     if request.method=='POST':
         title=request.form['title']
-        todo=Tasks(title=title,complete=False)
+        todo=Tasks(title=title,complete=False, project=project)
         db.session.add(todo)
         db.session.commit()
         # incomplete=Tasks.query.filter_by(complete=False).all()
         # complete=Tasks.query.filter_by(complete=True).all()
         return redirect(url_for('main.tasks',project=project))
     else:
-        incomplete=Tasks.query.filter_by(complete=False).all()
-        complete=Tasks.query.filter_by(complete=True).all()
+        incomplete=Tasks.query.filter_by(complete=False,project=project).all()
+        complete=Tasks.query.filter_by(complete=True,project=project).all()
         return render_template('task.html', project=project, incomplete=incomplete, complete=complete)
 
 @main.route('/dashboard', methods=['GET','POST'])
