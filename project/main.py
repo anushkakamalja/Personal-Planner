@@ -1,9 +1,11 @@
-from flask import Blueprint, render_template, request, url_for, redirect
+from flask import Blueprint, render_template, request, url_for, redirect, abort
 from .models import Dashboard
 from .models import Tasks
 from . import db
 from flask_login import login_required, current_user
 from sqlalchemy.engine import url
+from sqlalchemy.sql import exists
+from sqlalchemy import func
 
 main = Blueprint('main', __name__)
 
@@ -32,9 +34,14 @@ def tasks(project):
         # complete=Tasks.query.filter_by(complete=True).all()
         return redirect(url_for('main.tasks',project=project))
     else:
-        incomplete=Tasks.query.filter_by(complete=False,project=project).all()
-        complete=Tasks.query.filter_by(complete=True,project=project).all()
-        return render_template('task.html', project=project, incomplete=incomplete, complete=complete)
+        # exists = db.session.query(Dashboard.title).filter_by(title=).first() is not None
+        exists = db.session.query(Dashboard).filter(func.lower(Dashboard.title)==func.lower(project)).first() is not None
+        if exists:
+            incomplete=Tasks.query.filter_by(complete=False,project=project).all()
+            complete=Tasks.query.filter_by(complete=True,project=project).all()
+            return render_template('task.html', project=project, incomplete=incomplete, complete=complete)
+        else:
+            abort(404)
 
 @main.route('/dashboard', methods=['GET','POST'])
 @login_required

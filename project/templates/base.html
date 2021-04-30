@@ -30,6 +30,9 @@
           <input type="text" name="Search" id="" placeholder="Search..." />
         </div>
         <div class="nav-hide navbar-links">
+          {% block new_nav_link %}
+            
+          {% endblock new_nav_link %}
           {% if current_user.is_authenticated %}
           <div class="navbar-items navbar-account">
             <img
