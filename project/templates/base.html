@@ -17,6 +17,7 @@
           ><img
             src="{{url_for('static',filename='/assets/icons/logo.png')}}"
             alt=""
+            draggable="false"
         /></a>
       </div>
       <div class="nav-menu-container">
@@ -24,6 +25,7 @@
           <img
             src="{{url_for('static',filename='/assets/icons/search_48px.svg')}}"
             alt=""
+            draggable="false"
           />
           <input type="text" name="Search" id="" placeholder="Search..." />
         </div>
@@ -33,6 +35,7 @@
             <img
               src="{{url_for('static',filename='assets/icons/test_account_48px.svg')}}"
               alt=""
+              draggable="false"
             />
             <a href="{{url_for('main.profile')}}">My Account</a>
           </div>
@@ -60,6 +63,7 @@
             <img
               src="{{url_for('static',filename='/assets/icons/exit_48px.svg')}}"
               alt=""
+              draggable="false"
             />
             <a href="{{url_for('auth.login')}}">Logout</a>
           </div>

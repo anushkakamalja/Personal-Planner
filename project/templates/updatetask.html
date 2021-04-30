@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/css/task.css">
+{% endblock stylesheet %}
+{% block title %}
+    Update Task
+{% endblock title %}
+{% block content %}
+    <div class="addtaskwindow" style="display: block;">
+        <h2 class="modal-header">Update Task</h2>
+        <div>
+            <form action="/update/{{project}}/{{todo.sno}}" method="POST">
+              <input type="text" name="title" id="" class="taskname-holder" value='{{todo.title}}'/>
+              <br />
+              <input
+                type="submit"
+                name=""
+                id=""
+                value="Update Task"
+                class="taskname-submit"
+              />
+            </form>
+          </div>
+    </div>
+{% endblock content %}
