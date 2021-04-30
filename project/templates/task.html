@@ -1,6 +1,16 @@
 {% extends 'base.html' %} {% block stylesheet %}
 <link rel="stylesheet" href="/static/css/task.css" />
 {% endblock stylesheet %} {% block title %} My Tasks {% endblock title %}
+{% block new_nav_link %}
+<div class="navbar-items navbar-account">
+  <img
+    src="{{url_for('static',filename='assets/icons/home_48px.svg')}}"
+    alt=""
+    draggable="false"
+  />
+  <a href="{{url_for('main.dashboard')}}">Dashboard</a>
+</div>
+{% endblock new_nav_link %}
 {%block content %}
 <h1 class="taskpage-header">{{project}}</h1>
 
