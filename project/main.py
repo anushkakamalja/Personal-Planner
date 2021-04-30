@@ -45,11 +45,26 @@ def dashboard():
         db.session.add(todo)
         db.session.commit()
         allTodo=Dashboard.query.all()
-        return render_template('dashboard.html', allTodo=allTodo)
+        return redirect(url_for('main.dashboard', allTodo=allTodo))
     else:
         allTodo=Dashboard.query.all()
         return render_template('dashboard.html', allTodo=allTodo)
-     
+
+
+@main.route('/delete/<int:sno>')
+@login_required
+def remove(sno):
+        todo_list=Dashboard.query.filter_by(sno=sno).first()
+        db.session.delete(todo_list)
+        db.session.commit()
+        return redirect(url_for('main.dashboard'))
+
+@main.route('/update/<int:sno>')
+@login_required
+def update(sno):
+        todo_list=Dashboard.query.filter_by(sno=sno).first()
+        return render_template('update.html', todo_list=todo_list)
+
 
 @main.route('/delete/<project>/<int:sno>')
 @login_required

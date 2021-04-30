@@ -15,13 +15,17 @@
             <div class="box2">
                 {% for todo in allTodo %}
                     <li>
+                        <a href="/delete/{{todo.sno}}"><img class="delete" src="/static/assets/icons/trash_48px.svg" alt=""></a>
                         
+                        <a href="/update/{{todo.sno}}"><img class="edit" src="/static/assets/icons/edit_48px.svg" alt=""></a>
+                    
                         <img src="/static/assets/icons/todo_list_48px.svg" alt=""><br>
                         <button class="today-btn"> {{todo.title}} </button>
                      
                     </li>
 
                     {% endfor %}
+                    
                     <li>
                         <img src="/static/assets/icons/add_list_48px.svg" alt=""><br>
                         <button class="modal-btn"> Create New Project</button>
