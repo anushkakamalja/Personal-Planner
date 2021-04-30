@@ -45,11 +45,7 @@ def dashboard():
         db.session.add(todo)
         db.session.commit()
         allTodo=Dashboard.query.all()
-<<<<<<< HEAD
-        
-=======
         return redirect(url_for('main.dashboard'))
->>>>>>> fa1e2e11e0489098e9ea5d59056628ea5f06bc25
     else:
         allTodo=Dashboard.query.all()
         return render_template('dashboard.html', allTodo=allTodo)
