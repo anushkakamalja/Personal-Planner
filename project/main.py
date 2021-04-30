@@ -9,7 +9,7 @@ main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
-    return render_template('base.html')
+    return render_template('landing_page.html')
 
 @main.route('/profile')
 @login_required
@@ -45,7 +45,7 @@ def dashboard():
         db.session.add(todo)
         db.session.commit()
         allTodo=Dashboard.query.all()
-        return render_template('dashboard.html', allTodo=allTodo)
+        return redirect(url_for('main.dashboard'))
     else:
         allTodo=Dashboard.query.all()
         return render_template('dashboard.html', allTodo=allTodo)
@@ -76,3 +76,15 @@ def incomplete(sno,project):
     db.session.commit()
     return redirect(url_for('main.tasks',project=project))
 
+@main.route('/update/<project>/<int:sno>',methods=['GET','POST'])
+def updatetask(sno,project):
+    if request.method=='POST':
+        title=request.form['title']
+        todo=Tasks.query.filter_by(sno=sno).first()
+        todo.title=title
+        db.session.add(todo)
+        db.session.commit()
+        return redirect(url_for('main.tasks',project=project))
+    else:
+        todo=Tasks.query.filter_by(sno=sno).first()
+        return render_template('updatetask.html',todo=todo, project=project)
