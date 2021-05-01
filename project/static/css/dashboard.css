@@ -5,7 +5,7 @@
   font-family: 'Rubik', sans-serif;
 }
 
-body{
+body {
   background-image: url('/static/assets/images/dashboard_bg.jpg');
   background-size: cover;
   height: 100vh;
@@ -17,7 +17,6 @@ body{
 .box .box2 li {
   border: 2px;
   margin: -2rem 5.7rem;
-  padding: 4rem 4rem;
   text-align: center;
   border-radius: 20px;
   background-color: white;
@@ -28,9 +27,7 @@ body{
   height: 16rem;
   box-shadow: 10px 10px 10px #888888;
   padding-top: -10rem;
-  
 }
-
 
 .today-btn {
   border: none;
@@ -42,6 +39,7 @@ body{
   text-align: center;
   border-radius: 40rem;
   font-size: 20px;
+  margin-bottom: 2rem;
 }
 
 .inbox-btn {
@@ -67,11 +65,11 @@ body{
   font-size: 20px;
   cursor: pointer;
 }
-img{
+
+img {
   height: 5.2rem;
   width: 10rem;
   margin: auto;
-  margin-top: px;
 }
 
 h4 {
@@ -158,9 +156,6 @@ label {
   font-size: 17px;
   font-weight: bold;
 }
- 
- 
-
 
 @media only screen and (max-width: 1297px) {
   .full {
@@ -310,7 +305,6 @@ label {
 .navbar-logo {
   align-self: center;
   margin-right: 2rem;
-  
 }
 
 .nav-searchbar {
@@ -381,27 +375,32 @@ label {
   display: none;
 
 */
-.edit{
-  height: 40px;
-  /* margin-left: 0%;
-  margin-right: 0%;*/
-  width: 40px; 
-}   
-.delete{
-  height: 40px;
-  /* margin-left: 0%;
-  margin-right: 0%;
-  width: 30%; */
-  width: 40px; 
-} 
-.projectbox{
+.edit {
+  padding: 10px;
+  height: 50px;
+  width: 50px;
+  /* border: 1px solid grey; */
+  margin-right: 0.5rem;
+  border-radius: 40px;
+  background-color: rgba(192, 192, 226, 0.5);
+}
+.delete {
+  padding: 10px;
+  height: 50px;
+  width: 50px;
+  /* border: 1px solid grey; */
+  border-radius: 40px;
+  background-color: rgba(192, 192, 226, 0.5);
+}
+.modifying-icons {
+  width: 20rem;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem;
+}
+
+.new-project-box{
   position: relative;
-    left: 10rem;
-    
-    display: flex;
-    /* justify-content: space-around; */
-    align-items: center;
-    /* top: 15.5rem; */
-    top: -3.5rem;
-    z-index: 100;
-} 
+  top: 4rem;
+  padding: 1.5rem;
+}
