@@ -31,6 +31,7 @@ body{
   
 }
 
+
 .today-btn {
   border: none;
   outline: none;
@@ -157,14 +158,8 @@ label {
   font-size: 17px;
   font-weight: bold;
 }
-
  
- /* .delete{
-  height: 40px;
-  margin-left: -115px;
-  margin-top: -156px;
-}    */
-
+ 
 
 
 @media only screen and (max-width: 1297px) {
@@ -385,3 +380,28 @@ label {
   height: 3rem;
   display: none;
 
+*/
+.edit{
+  height: 40px;
+  /* margin-left: 0%;
+  margin-right: 0%;*/
+  width: 40px; 
+}   
+.delete{
+  height: 40px;
+  /* margin-left: 0%;
+  margin-right: 0%;
+  width: 30%; */
+  width: 40px; 
+} 
+.projectbox{
+  position: relative;
+    left: 10rem;
+    
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    /* top: 15.5rem; */
+    top: -3.5rem;
+    z-index: 100;
+} 

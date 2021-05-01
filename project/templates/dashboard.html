@@ -8,29 +8,50 @@
 {% block content %}
     <div class="full">
         <h4>PERSONAL DASHBOARD</h4>
-          
-        
         
         <div class="box">   
             <div class="box2">
-                {% for todo in allTodo %}
-                    <li>
-                        <a href="/delete/{{todo.sno}}"><img class="delete" src="/static/assets/icons/trash_48px.svg" alt=""></a>
-                        
-                        <a href="/update/{{todo.sno}}"><img class="edit" src="/static/assets/icons/edit_48px.svg" alt=""></a>
+                 <!-- {% if found_list %}
+                <li>
+                    <div class="edit">
+                        <a href="/update/{{found_list.sno}}"><img src="/static/assets/icons/edit_48px.svg" height="40px" alt=""></a>
+                    </div>
+                    <div class="delete">
+                    <a href="/delete/{{found_list.sno}}"><img src="/static/assets/icons/trash_48px.svg" height="40px" alt=""></a>
+                    </div>
                     
-                        <img src="/static/assets/icons/todo_list_48px.svg" alt=""><br>
-                        <button class="today-btn"> {{todo.title}} </button>
-                     
-                    </li>
+                    <img src="/static/assets/icons/todo_list_48px.svg" alt=""><br>
+                    <button class="today-btn"> {{found_list.title}} </button>
+                 
+                </li>
+                {% else %} -->
+                
+                {% for todo in allTodo %}
+                
+                <li>
+                    <div class="projectbox">
+                    
+                    <a href="/update/{{todo.sno}}"><img class="edit" src="/static/assets/icons/edit_48px.svg" alt=""></a>
+                    
+                    <a href="/delete/{{todo.sno}}"><img class="delete" src="/static/assets/icons/trash_48px.svg" alt=""></a> 
+                </div>
+                    <img src="/static/assets/icons/todo_list_48px.svg" alt=""><br>
+                    <button class="today-btn"> {{todo.title}} </button>
+                 
+                </li>
+           
 
-                    {% endfor %}
+                {% endfor %}
+                    
+                <!-- {% endif %} -->
+                
                     
                     <li>
                         <img src="/static/assets/icons/add_list_48px.svg" alt=""><br>
                         <button class="modal-btn"> Create New Project</button>
                         
                     </li>
+                
                 
             </div>
         </div>

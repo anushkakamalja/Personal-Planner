@@ -20,15 +20,21 @@
             draggable="false"
         /></a>
       </div>
+
+      <!-- <form action="/search" method="POST"> -->
       <div class="nav-menu-container">
         <div class="nav-hide nav-searchbar">
-          <img
+          <img onclick="javascript.form.submit();"
             src="{{url_for('static',filename='/assets/icons/search_48px.svg')}}"
             alt=""
             draggable="false"
           />
           <input type="text" name="Search" id="" placeholder="Search..." />
         </div>
+      <!-- </form> -->
+    
+      
+        
         <div class="nav-hide navbar-links">
           {% block new_nav_link %}
             

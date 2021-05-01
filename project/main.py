@@ -13,6 +13,17 @@ main = Blueprint('main', __name__)
 def index():
     return render_template('landing_page.html')
 
+# @main.route('/search',methods=['GET','POST'])
+# def search():
+#     if request.method=='POST':
+#         print(request.form)
+#         title=request.form['Search']
+#         search_list=Dashboard.query.filter_by(title=title).first()
+#         print(search_list.title)
+#         found_list=True
+#         return redirect(url_for('main.dashboard',search_list=search_list,found_list=found_list))
+
+
 @main.route('/profile')
 @login_required
 def profile():
