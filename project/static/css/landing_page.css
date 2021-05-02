@@ -56,11 +56,11 @@
     margin-left: 0px;
     text-decoration: none;
     color: black;
-    margin-left: -270px;
+    margin-left: -204px;
   }
 
   .Myaccount a{
-      margin-left: -90px;
+      margin-left: -83px;
   }
   
   .dashboard,
@@ -86,13 +86,13 @@
 
   .createbtn{
       height: 45px;
-      width: 200px;
+      width: 150px;
       margin-top: 19px;
       background-color: #030047;;
       color: white;
       border-radius: 0.5rem;
       font-size: 20px;
-      margin-left: -82px;
+      margin-left: -114px;
       cursor: pointer;
       border: none;
   }
