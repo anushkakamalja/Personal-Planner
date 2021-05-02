@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% block header %} {% endblock header %} {% block stylesheet %} {% endblock
     stylesheet %}
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/static/css/navbar.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <title>{% block title %} {% endblock title %}</title>
@@ -24,22 +29,19 @@
       <!-- <form action="/search" method="POST"> -->
       <div class="nav-menu-container">
         <div class="nav-hide nav-searchbar">
-          <img onclick="javascript.form.submit();"
+          <img
+            onclick="javascript.form.submit();"
             src="{{url_for('static',filename='/assets/icons/search_48px.svg')}}"
             alt=""
             draggable="false"
           />
           <input type="text" name="Search" id="" placeholder="Search..." />
         </div>
-      <!-- </form> -->
-    
-      
-        
+        <!-- </form> -->
+
         <div class="nav-hide navbar-links">
-          {% block new_nav_link %}
-            
-          {% endblock new_nav_link %}
-          {% if current_user.is_authenticated %}
+          {% block new_nav_link %} {% endblock new_nav_link %} {% if
+          current_user.is_authenticated %}
           <div class="navbar-items navbar-account">
             <img
               src="{{url_for('static',filename='assets/icons/test_account_48px.svg')}}"
@@ -48,8 +50,7 @@
             />
             <a href="{{url_for('main.profile')}}">My Account</a>
           </div>
-          {% endif %}
-          {% if not current_user.is_authenticated %}
+          {% endif %} {% if not current_user.is_authenticated %}
           <div class="navbar-items navbar-account">
             <!-- <img
               src="{{url_for('static',filename='assets/icons/test_account_48px.svg')}}"
@@ -57,8 +58,7 @@
             /> -->
             <a href="{{url_for('auth.login')}}">Login</a>
           </div>
-          {% endif %}
-          {% if not current_user.is_authenticated %}
+          {% endif %} {% if not current_user.is_authenticated %}
           <div class="navbar-items navbar-account">
             <!-- <img
               src="{{url_for('static',filename='assets/icons/test_account_48px.svg')}}"
@@ -66,8 +66,7 @@
             /> -->
             <a href="{{url_for('auth.signup')}}">Signup</a>
           </div>
-          {% endif %}
-          {% if current_user.is_authenticated %}
+          {% endif %} {% if current_user.is_authenticated %}
           <div class="navbar-items navbar-logout">
             <img
               src="{{url_for('static',filename='/assets/icons/exit_48px.svg')}}"
