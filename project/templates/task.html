@@ -14,6 +14,37 @@
 {%block content %}
 <h1 class="taskpage-header">{{project}}</h1>
 
+
+{% if found_list %}
+
+<button class="createnew tasklist">
+  <span>
+    <a href="/complete/{{project}}/{{found_list.title}}"
+      ><img
+        class="add-icon task-icon"
+        src="/static/assets/icons/round_50px.svg"
+        alt="" /></a
+    ><span class="btn-text">{{found_list.title}}</span></span
+  >
+  <span class="btn-wrapper">
+    <div class="btn">
+      <img src="/static/assets/icons/trash_48px.svg" alt="" />
+      <a href="/delete/{{project}}/{{found_list.title}}">Delete</a>
+    </div>
+    <div class="btn">
+      <img src="/static/assets/icons/edit_48px.svg" alt="" />
+      <a href='/update/{{project}}/{{found_list.title}}'>Update</a>
+    </div>
+    <!-- <div class="btn">
+      <img src="/static/assets/icons/schedule_48px.svg" alt="" />
+      <a>Schedule</a>
+    </div> -->
+  </span>
+</button>
+
+{% else %}
+
+
 {% for todo in incomplete %}
 <button class="createnew tasklist">
   <span>
@@ -40,6 +71,7 @@
   </span>
 </button>
 {% endfor %}
+{% endif %}
 
 <button
   class="createnew new-create-style"

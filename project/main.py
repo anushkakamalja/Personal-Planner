@@ -14,6 +14,7 @@ def index():
     return render_template('landing_page.html')
 
 # @main.route('/search',methods=['GET','POST'])
+# @login_required
 # def search():
 #     if request.method=='POST':
 #         print(request.form)
@@ -21,7 +22,26 @@ def index():
 #         search_list=Dashboard.query.filter_by(title=title).first()
 #         print(search_list.title)
 #         found_list=True
-#         return redirect(url_for('main.dashboard',search_list=search_list,found_list=found_list))
+#         # return redirect(url_for('main.dashboard',search_list=search_list,found_list=found_list))
+#         return render_template('dashboard.html',search_list=search_list,found_list=found_list)
+#     else:
+#         search_list=Dashboard.query.filter_by(title=title).first()
+#         return render_template('dashboard.html',search_list=search_list,found_list=found_list)
+
+@main.route('/search',methods=['GET','POST'])
+@login_required
+def searchtask():
+    if request.method=='POST':
+        print(request.form)
+        title=request.form['Search']
+        search_list_task=Tasks.query.filter_by(title=title).first()
+        print(search_list_task.title)
+        found_list=True
+        # return redirect(url_for('main.dashboard',search_list=search_list,found_list=found_list))
+        return render_template('task.html',search_list_task=search_list_task,found_list=found_list)
+    else:
+        search_list_task=Tasks.query.filter_by(title=title).first()
+        return render_template('task.html',search_list_task=search_list_task,found_list=found_list)
 
 
 @main.route('/profile')
