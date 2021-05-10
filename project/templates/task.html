@@ -2,6 +2,11 @@
 <link rel="stylesheet" href="/static/css/task.css" />
 {% endblock stylesheet %} {% block title %} My Tasks {% endblock title %}
 {% block new_nav_link %}
+
+{% block actionurl %}
+  {{url_for('main.searchtask')}}
+{% endblock actionurl %}
+
 <div class="navbar-items navbar-account">
   <img
     src="{{url_for('static',filename='assets/icons/home_48px.svg')}}"
@@ -19,21 +24,21 @@
 
 <button class="createnew tasklist">
   <span>
-    <a href="/complete/{{project}}/{{found_list.title}}"
+    <a href="/complete/{{project}}/{{todo.title}}"
       ><img
         class="add-icon task-icon"
         src="/static/assets/icons/round_50px.svg"
         alt="" /></a
-    ><span class="btn-text">{{found_list.title}}</span></span
+    ><span class="btn-text">{{todo.title}}</span></span
   >
   <span class="btn-wrapper">
     <div class="btn">
       <img src="/static/assets/icons/trash_48px.svg" alt="" />
-      <a href="/delete/{{project}}/{{found_list.title}}">Delete</a>
+      <a href="/delete/{{project}}/{{todo.sno}}">Delete</a>
     </div>
     <div class="btn">
       <img src="/static/assets/icons/edit_48px.svg" alt="" />
-      <a href='/update/{{project}}/{{found_list.title}}'>Update</a>
+      <a href='/update/{{project}}/{{todo.sno}}'>Update</a>
     </div>
     <!-- <div class="btn">
       <img src="/static/assets/icons/schedule_48px.svg" alt="" />

@@ -13,35 +13,35 @@ main = Blueprint('main', __name__)
 def index():
     return render_template('landing_page.html')
 
-# @main.route('/search',methods=['GET','POST'])
-# @login_required
-# def search():
-#     if request.method=='POST':
-#         print(request.form)
-#         title=request.form['Search']
-#         search_list=Dashboard.query.filter_by(title=title).first()
-#         print(search_list.title)
-#         found_list=True
-#         # return redirect(url_for('main.dashboard',search_list=search_list,found_list=found_list))
-#         return render_template('dashboard.html',search_list=search_list,found_list=found_list)
-#     else:
-#         search_list=Dashboard.query.filter_by(title=title).first()
-#         return render_template('dashboard.html',search_list=search_list,found_list=found_list)
+@main.route('/search',methods=['GET','POST'])
+@login_required
+def search():
+    if request.method=='POST':
+        # print(request.form)
+        title=request.form['Search']
+        todos=Dashboard.query.filter_by(title=title).first()
+        # print(todos.title)
+        found_list=True
+        # return redirect(url_for('main.dashboard',search_list=search_list,found_list=found_list))
+        return render_template('dashboard.html',todos=todos,found_list=found_list)
+    else:
+        todos=Dashboard.query.filter_by(title=title).first()
+        return render_template('dashboard.html',todos=todos,found_list=found_list)
 
 @main.route('/search',methods=['GET','POST'])
 @login_required
 def searchtask():
     if request.method=='POST':
-        print(request.form)
+        # print(request.form)
         title=request.form['Search']
-        search_list_task=Tasks.query.filter_by(title=title).first()
-        print(search_list_task.title)
+        todo=Tasks.query.filter_by(title=title).first()
+        # print(todo.title)
         found_list=True
         # return redirect(url_for('main.dashboard',search_list=search_list,found_list=found_list))
-        return render_template('task.html',search_list_task=search_list_task,found_list=found_list)
+        return render_template('task.html',todo=todo,found_list=found_list)
     else:
-        search_list_task=Tasks.query.filter_by(title=title).first()
-        return render_template('task.html',search_list_task=search_list_task,found_list=found_list)
+        todo=Tasks.query.filter_by(title=title).first()
+        return render_template('task.html',todo=todo,found_list=found_list)
 
 
 @main.route('/profile')
@@ -80,14 +80,16 @@ def tasks(project):
 def dashboard():
     if request.method=='POST':
         title=request.form['title']    
-        todo=Dashboard(title=title)
-        db.session.add(todo)
+        todos=Dashboard(title=title)
+        db.session.add(todos)
         db.session.commit()
         allTodo=Dashboard.query.all()
         return redirect(url_for('main.dashboard'))
+
     else:
         allTodo=Dashboard.query.all()
         return render_template('dashboard.html', allTodo=allTodo)
+       
 
 
 @main.route('/delete/<int:sno>')
@@ -121,6 +123,14 @@ def delete(sno,project):
         db.session.delete(todo)
         db.session.commit()
         return redirect(url_for('main.tasks',project=project))
+
+# @main.route('/tasks/<project>')
+# @login_required
+# def redirect(title,project):
+#         todo=Tasks.query.filter_by(title=title).first()
+#         db.session.commit()
+#         return redirect(url_for('main.tasks',project=project))
+
 
 @main.route('/complete/<project>/<int:sno>')
 @login_required
