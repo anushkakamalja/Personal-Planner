@@ -404,3 +404,6 @@ label {
   top: 4rem;
   padding: 1.5rem;
 }
+.enable{
+  display: none;
+}

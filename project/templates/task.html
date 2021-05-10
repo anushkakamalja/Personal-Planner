@@ -3,9 +3,11 @@
 {% endblock stylesheet %} {% block title %} My Tasks {% endblock title %}
 {% block new_nav_link %}
 
+<div class="disable">
 {% block actionurl %}
-  {{url_for('main.searchtask')}}
+  {{url_for('main.searchtask',project=project)}}
 {% endblock actionurl %}
+</div>
 
 <div class="navbar-items navbar-account">
   <img

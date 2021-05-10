@@ -4,10 +4,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
 {% endblock stylesheet %} {% block title %} Dashboard {% endblock title %} {%
 block content %}
-
+<div class="enable">
 {% block actionurl %}
   {{url_for('main.search')}}
 {% endblock actionurl %}
+</div>
 
 <div class="full">
   <h4>PERSONAL DASHBOARD</h4>

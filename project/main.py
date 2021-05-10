@@ -28,9 +28,9 @@ def search():
         todos=Dashboard.query.filter_by(title=title).first()
         return render_template('dashboard.html',todos=todos,found_list=found_list)
 
-@main.route('/search',methods=['GET','POST'])
+@main.route('/search/<project>',methods=['GET','POST'])
 @login_required
-def searchtask():
+def searchtask(project):
     if request.method=='POST':
         # print(request.form)
         title=request.form['Search']
@@ -38,10 +38,10 @@ def searchtask():
         # print(todo.title)
         found_list=True
         # return redirect(url_for('main.dashboard',search_list=search_list,found_list=found_list))
-        return render_template('task.html',todo=todo,found_list=found_list)
+        return render_template('task.html',todo=todo,found_list=found_list,project=project)
     else:
         todo=Tasks.query.filter_by(title=title).first()
-        return render_template('task.html',todo=todo,found_list=found_list)
+        return render_template('task.html',todo=todo,found_list=found_list,project=project)
 
 
 @main.route('/profile')
