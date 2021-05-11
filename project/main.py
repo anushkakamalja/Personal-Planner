@@ -1,4 +1,6 @@
 from flask import Blueprint, render_template, request, url_for, redirect, abort
+import flask
+from flask.helpers import flash
 from .models import Dashboard
 from .models import Tasks
 from . import db
@@ -19,11 +21,17 @@ def search():
     if request.method=='POST':
         # print(request.form)
         title=request.form['Search']
-        todos=Dashboard.query.filter_by(title=title).first()
+        # todos=Dashboard.query.filter_by(title=title).first()
+        todos=db.session.query(Dashboard).filter(func.lower(Dashboard.title)==func.lower(title)).first()
+        exist=todos is not None
         # print(todos.title)
-        found_list=True
+        if exist:
+            found_list=True
         # return redirect(url_for('main.dashboard',search_list=search_list,found_list=found_list))
-        return render_template('dashboard.html',todos=todos,found_list=found_list)
+            return render_template('dashboard.html',todos=todos,found_list=found_list)
+        else:
+            found_list=False
+            return render_template('dashboard.html',todos=todos,found_list=found_list)
     else:
         todos=Dashboard.query.filter_by(title=title).first()
         return render_template('dashboard.html',todos=todos,found_list=found_list)
@@ -34,7 +42,8 @@ def searchtask(project):
     if request.method=='POST':
         # print(request.form)
         title=request.form['Search']
-        todo=Tasks.query.filter_by(title=title).first()
+        # todo=Tasks.query.filter_by(title=title).first()
+        todo=db.session.query(Tasks).filter(func.lower(Tasks.title)==func.lower(title)).first()
         # print(todo.title)
         found_list=True
         # return redirect(url_for('main.dashboard',search_list=search_list,found_list=found_list))
