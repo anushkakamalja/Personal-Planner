@@ -109,20 +109,20 @@ def remove(sno):
         db.session.commit()
         return redirect(url_for('main.dashboard'))
 
-@main.route('/update/<int:sno>',methods=['GET','POST'])
-@login_required
-def update(sno):
-    if request.method=='POST':
-        title=request.form['title']    
-        todo_list=Dashboard.query.filter_by(sno=sno).first()
-        todo_list.title=title
-        db.session.add(todo_list)
-        db.session.commit()
-        allTodo=Dashboard.query.all()
-        return redirect(url_for('main.dashboard'))
-    else:
-        todo_list=Dashboard.query.filter_by(sno=sno).first()
-        return render_template('updateproject.html', todo_list=todo_list)
+# @main.route('/update/<int:sno>',methods=['GET','POST'])
+# @login_required
+# def update(sno):
+#     if request.method=='POST':
+#         title=request.form['title']    
+#         todo_list=Dashboard.query.filter_by(sno=sno).first()
+#         todo_list.title=title
+#         db.session.add(todo_list)
+#         db.session.commit()
+#         allTodo=Dashboard.query.all()
+#         return redirect(url_for('main.dashboard'))
+#     else:
+#         todo_list=Dashboard.query.filter_by(sno=sno).first()
+#         return render_template('updateproject.html', todo_list=todo_list)
 
 
 @main.route('/delete/<project>/<int:sno>')
