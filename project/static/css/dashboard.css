@@ -27,6 +27,11 @@ body {
   height: 16rem;
   box-shadow: 10px 10px 10px #888888;
   padding-top: -10rem;
+  transition: all 0.5s;
+}
+
+.box .box2 li:hover{
+  transform: scale(1.1);
 }
 
 .today-btn {

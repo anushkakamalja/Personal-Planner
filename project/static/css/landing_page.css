@@ -95,7 +95,15 @@
       margin-left: -114px;
       cursor: pointer;
       border: none;
+      transition: all 0.5s;
+      outline: none;
   }
+
+  .createbtn:hover{
+    transform: scale(1.1);
+  }
+
+
   .image img{
     height: 420px;
     margin-left: 820px;
@@ -118,7 +126,7 @@
 .startbtn button{
   height: 57px;
   width: 185px;
-  background-color: #030047;
+  background-color: rgb(3, 0, 71);
   border: none;
   margin-top: 40px;
   margin-left: 90px;
@@ -127,11 +135,16 @@
   cursor: pointer;
   border-radius: 0.7rem;
   box-shadow: 6px 6px 6px #888888;
+  transition: all 0.3s;
 }
 /* .startimg{
   height:25px;
   margin-top: -30px;
 } */
+
+.startbtn button:hover{
+  background-color: #030135;
+}
 
 
   

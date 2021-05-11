@@ -1,13 +1,14 @@
 {% extends 'base.html' %} {% block stylesheet %}
 <link rel="stylesheet" href="/static/css/dashboard.css" />
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
+  rel="stylesheet"
+/>
 {% endblock stylesheet %} {% block title %} Dashboard {% endblock title %} {%
 block content %}
 <div class="enable">
-{% block actionurl %}
-  {{url_for('main.search')}}
-{% endblock actionurl %}
+  {% block actionurl %} {{url_for('main.search')}} {% endblock actionurl %}
 </div>
 
 <div class="full">
@@ -16,7 +17,7 @@ block content %}
   <div class="box">
     <div class="box2">
       {% if found_list %}
-      
+
       <li>
         <div class="modifying-icons">
           <a href="/update/{{todos.sno}}"
@@ -31,38 +32,34 @@ block content %}
           /></a>
         </div>
         <a href="{{url_for('main.tasks',project=todos.title.lower())}}">
-        <img src="/static/assets/icons/todo_list_48px.svg" alt="" /><br />
-        <button class="today-btn">{{todos.title}}</button>
-      </a>
-      </li>
-                {% else %}
-
-      {% for todos in allTodo %}
-        <li>
-          <div class="modifying-icons">
-            <a href="/update/{{todos.sno}}"
-              ><img class="edit" src="/static/assets/icons/edit_48px.svg" alt=""
-            /></a>
-  
-            <a href="/delete/{{todos.sno}}"
-              ><img
-                class="delete"
-                src="/static/assets/icons/trash_48px.svg"
-                alt=""
-            /></a>
-          </div>
-          <a href="{{url_for('main.tasks',project=todos.title.lower())}}">
           <img src="/static/assets/icons/todo_list_48px.svg" alt="" /><br />
           <button class="today-btn">{{todos.title}}</button>
         </a>
-        </li>
+      </li>
+      {% else %} {% for todos in allTodo %}
+      <li>
+        <div class="modifying-icons">
+          <a href="/update/{{todos.sno}}"
+            ><img class="edit" src="/static/assets/icons/edit_48px.svg" alt=""
+          /></a>
 
-      {% endfor %}
+          <a href="/delete/{{todos.sno}}"
+            ><img
+              class="delete"
+              src="/static/assets/icons/trash_48px.svg"
+              alt=""
+          /></a>
+        </div>
+        <a href="{{url_for('main.tasks',project=todos.title.lower())}}">
+          <img src="/static/assets/icons/todo_list_48px.svg" alt="" /><br />
+          <button class="today-btn">{{todos.title}}</button>
+        </a>
+      </li>
 
-      {% endif %}
+      {% endfor %} {% endif %}
 
       <li class="new-project-box">
-        <img src="/static/assets/icons/add_list_48px.svg" alt=""/><br />
+        <img src="/static/assets/icons/add_list_48px.svg" alt="" /><br />
         <button class="modal-btn">Create New Project</button>
       </li>
     </div>
@@ -83,5 +80,22 @@ block content %}
   </form>
 </div>
 
-<script src="../static/js/dashboard.js"></script>
+<script>
+  var modalBtn = document.querySelector('.new-project-box');
+  var modalBg = document.querySelector('.modal-bg');
+  var modalClose = document.querySelector('.modal-close');
+  var modalBTN = document.querySelector('.modalbtn');
+
+  modalBtn.addEventListener('click', function () {
+    modalBg.classList.add('bg-active');
+  });
+
+  modalClose.addEventListener('click', function () {
+    modalBg.classList.remove('bg-active');
+  });
+
+  modalBTN.addEventListener('click', function () {
+    modalBg.classList.remove('bg-active');
+  });
+</script>
 {% endblock content %}
