@@ -64,6 +64,7 @@ body {
   border-radius: 40rem;
   font-size: 20px;
   cursor: pointer;
+  margin-top: -1rem;
 }
 
 img {
