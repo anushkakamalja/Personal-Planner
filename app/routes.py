@@ -182,7 +182,7 @@ def updatetask(sno,project):
         todo.title=title
         db.session.add(todo)
         db.session.commit()
-        return redirect(url_for('main.tasks',project=project))
+        return redirect(url_for('tasks',project=project))
     else:
         todo=Tasks.query.filter_by(sno=sno).first()
         return render_template('updatetask.html',todo=todo, project=project)

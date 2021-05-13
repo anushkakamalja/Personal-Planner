@@ -46,10 +46,9 @@
               alt=""
               draggable="false"
             />
-            <a href="login">My Account</a>
-            
+            <a href="{{url_for('profile')}}">My Account</a>
           </div>
-          <a href="login"><button class="createbtn">Login</button></a>          
+          <a href="login"><button class="createbtn">Login</button></a>
         </div>
       </div>
 
@@ -76,7 +75,7 @@
       </div>
 
       <div class="startbtn">
-        <a href="login">
+        <a href="{{url_for('signup')}}">
           <button>
             Get Started
             <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
