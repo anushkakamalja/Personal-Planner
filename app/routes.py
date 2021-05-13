@@ -1,5 +1,5 @@
-from wtforms.validators import Email
-from app import app, mail
+# from wtforms.validators import Email
+from app import app
 from flask import Blueprint, render_template, request, url_for, redirect, abort
 import flask
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -7,12 +7,12 @@ from flask.helpers import flash
 from app.models import Dashboard, Tasks, User
 from app import db
 
-from app.forms import VerifyUser
+# from app.forms import VerifyUser
 from flask_login import login_user, logout_user,login_required, current_user
 from sqlalchemy.engine import url
 from sqlalchemy.sql import exists
 from sqlalchemy import func
-from app.email import send_email
+# from app.email import send_email
 
 @app.route('/')
 @app.route('/landing_page')
@@ -194,15 +194,15 @@ def profile():
     return render_template('profile.html', name=current_user.name)
 
     
-@app.route('/send_mail',methods=['POST','GET'])
-def send_mail():
-    form = VerifyUser()
-    if form.validate_on_submit():
-        email = form.data["email"]
-        is_user = User.check_user(email)
-        send_email(email)
-        return redirect(url_for('login'))
-    return render_template("send_mail.html", form=form)
+# @app.route('/send_mail',methods=['POST','GET'])
+# def send_mail():
+#     form = VerifyUser()
+#     if form.validate_on_submit():
+#         email = form.data["email"]
+#         is_user = User.check_user(email)
+#         send_email(email)
+#         return redirect(url_for('login'))
+#     return render_template("send_mail.html", form=form)
 
 @app.route('/logout')
 @login_required

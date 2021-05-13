@@ -14,9 +14,9 @@ class User(UserMixin, db.Model):
             return True
         return False
 
-class ResetUser(UserMixin, db.Model):
-    email = db.Column(db.String(100), unique=True, primary_key=True)
-    token = db.Column(db.String(100))
+# class ResetUser(UserMixin, db.Model):
+#     email = db.Column(db.String(100), unique=True, primary_key=True)
+#     token = db.Column(db.String(100))
 
 class Tasks(db.Model):
     sno=db.Column(db.Integer, primary_key=True)

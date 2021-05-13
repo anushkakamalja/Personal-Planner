@@ -1,4 +1,4 @@
-FLASK_APP=run.py
+FLASK_APP=main.py
 FLASK_ENV=development
 SECRET_KEY=PyTrio
 SQLALCHEMY_DATABASE_URI=sqlite:///db.sqlite
