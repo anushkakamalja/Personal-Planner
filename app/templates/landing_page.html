@@ -27,7 +27,7 @@
 
       <div class="header">
         <div class="logo">
-          <a href="{{url_for('main.index')}}">
+          <a href="{{url_for('index')}}">
             <img src="/static/assets/icons/logo.png" alt="" draggable="false" />
           </a>
         </div>
@@ -38,7 +38,7 @@
               alt=""
               draggable="false"
             />
-            <a href="#">Dashboard</a>
+            <a href="dashboard">Dashboard</a>
           </div>
           <div class="Myaccount">
             <img
@@ -46,9 +46,10 @@
               alt=""
               draggable="false"
             />
-            <a href="#">My Account</a>
+            <a href="login">My Account</a>
+            
           </div>
-          <button class="createbtn">Login</button>
+          <a href="login"><button class="createbtn">Login</button></a>          
         </div>
       </div>
 
@@ -75,10 +76,12 @@
       </div>
 
       <div class="startbtn">
-        <button>
-          Get Started
-          <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-        </button>
+        <a href="login">
+          <button>
+            Get Started
+            <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+          </button>
+        </a>
       </div>
     </div>
   </body>

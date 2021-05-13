@@ -8,6 +8,16 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(100))
     name = db.Column(db.String(1000))
 
+    def check_user(email):
+        user = User.query.filter_by(email=email).first()
+        if user:
+            return True
+        return False
+
+class ResetUser(UserMixin, db.Model):
+    email = db.Column(db.String(100), unique=True, primary_key=True)
+    token = db.Column(db.String(100))
+
 class Tasks(db.Model):
     sno=db.Column(db.Integer, primary_key=True)
     title=db.Column(db.String(200), nullable=False)

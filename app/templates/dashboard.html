@@ -5,10 +5,10 @@
   href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
   rel="stylesheet"
 />
-{% endblock stylesheet %} {% block title %} Dashboard {% endblock title %} {%
-block content %}
+{% endblock stylesheet %} {% block title %} Dashboard {% endblock title %} 
+{%block content %}
 <div class="enable">
-  {% block actionurl %} {{url_for('main.search')}} {% endblock actionurl %}
+  {% block actionurl %} {{url_for('search')}} {% endblock actionurl %}
 </div>
 
 <div class="full">
@@ -50,7 +50,7 @@ block content %}
               alt=""
           /></a>
         </div>
-        <a href="{{url_for('main.tasks',project=todos.title.lower())}}">
+        <a href="{{url_for('tasks',project=todos.title.lower())}}">
           <img src="/static/assets/icons/todo_list_48px.svg" alt="" /><br />
           <button class="today-btn">{{todos.title}}</button>
         </a>

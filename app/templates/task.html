@@ -5,7 +5,7 @@
 
 <div class="disable">
 {% block actionurl %}
-  {{url_for('main.searchtask',project=project)}}
+  {{url_for('searchtask',project=project)}}
 {% endblock actionurl %}
 </div>
 
@@ -15,7 +15,7 @@
     alt=""
     draggable="false"
   />
-  <a href="{{url_for('main.dashboard')}}">Dashboard</a>
+  <a href="{{url_for('dashboard')}}">Dashboard</a>
 </div>
 {% endblock new_nav_link %}
 {%block content %}
