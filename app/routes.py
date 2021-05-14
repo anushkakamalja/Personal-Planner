@@ -40,6 +40,7 @@ def login_post():
 
     # if the above check passes, then we know the user has the right credentials
     login_user(user, remember=remember)
+    # id= user.id
     return redirect(url_for('dashboard'))
 
 @app.route('/signup')
@@ -51,6 +52,7 @@ def signup_post():
     email = request.form.get('email')
     name = request.form.get('name')
     password = request.form.get('password')
+    print(name)
 
     user = User.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
 
@@ -59,6 +61,7 @@ def signup_post():
         return redirect(url_for('signup'))
 
     # create a new user with the form data. Hash the password so the plaintext version isn't saved.
+
     new_user = User(email=email, name=name, password=generate_password_hash(password, method='sha256'))
 
     # add the new user to the database
@@ -188,10 +191,20 @@ def updatetask(sno,project):
         return render_template('updatetask.html',todo=todo, project=project)
 
 
-@app.route('/profile')
+@app.route('/profile',methods=["GET","POST"])
 @login_required
 def profile():
-    return render_template('profile.html', name=current_user.name)
+    id=current_user.id
+    print(id)
+    user=User.query.filter_by(id=id).first()
+    print(user)
+    name=user.name
+    email=user.email
+    password=user.password
+    print(email)
+        # user.name=name
+    
+    return render_template('profile.html', name=current_user.name, email=email)
 
     
 # @app.route('/send_mail',methods=['POST','GET'])
