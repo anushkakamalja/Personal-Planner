@@ -35,15 +35,15 @@
         <img src="/static/assets/icons/edit-profile_48px.svg" alt="" />
         <h2>EDIT PROFILE</h2>
       </div>
-      <form action="">
+      <form action="" method="POST">
         <div class="details">
           <div class="name">
             <label for="">Name</label>
-            <input type="text" placeholder={{name}}  />
+            <input type="text" placeholder={{name}}  name="name"/>
           </div>
           <div class="email">
             <label for="">Email Address</label>
-            <input type="text" placeholder={{email}} />
+            <input type="text" placeholder={{email}} name="email" />
           </div>
           <!--<div class="password">
             <label for="">Password</label>
@@ -51,7 +51,8 @@
           </div> -->
         </div>
         <div class="done">
-          <button>Done</button>
+          <input type="submit" name="" id="" placeholder="Done">
+          <!-- <button>Done</button> -->
         </div>
       </form>
     </div>

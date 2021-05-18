@@ -1,11 +1,10 @@
 # from wtforms.validators import Email
 from app import app
-from flask import Blueprint, render_template, request, url_for, redirect, abort
+from flask import render_template, request, url_for, redirect, abort
 import flask
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask.helpers import flash
-from app.models import Dashboard, Tasks, User
-from app import db
+from app.models import Dashboard, Tasks, User, updateone
 
 # from app.forms import VerifyUser
 from flask_login import login_user, logout_user,login_required, current_user
@@ -65,25 +64,9 @@ def signup_post():
     new_user = User(email=email, name=name, password=generate_password_hash(password, method='sha256'))
 
     # add the new user to the database
-    db.session.add(new_user)
-    db.session.commit()
+    User.add_user(new_user=new_user)
 
     return redirect(url_for('login'))
-
-@app.route('/dashboard', methods=['GET','POST'])
-@login_required
-def dashboard():
-    if request.method=='POST':
-        title=request.form['title']    
-        todos=Dashboard(title=title)
-        db.session.add(todos)
-        db.session.commit()
-        allTodo=Dashboard.query.all()
-        return redirect(url_for('dashboard'))
-
-    else:
-        allTodo=Dashboard.query.all()
-        return render_template('dashboard.html', allTodo=allTodo)
 
 
 @app.route('/search',methods=['GET','POST'])
@@ -93,7 +76,7 @@ def search():
         # print(request.form)
         title=request.form['Search']
         # todos=Dashboard.query.filter_by(title=title).first()
-        todos=db.session.query(Dashboard).filter(func.lower(Dashboard.title)==func.lower(title)).first()
+        todos=Tasks.find_task(title=title)
         exist=todos is not None
         # print(todos.title)
         if exist:
@@ -114,7 +97,7 @@ def searchtask(project):
         # print(request.form)
         title=request.form['Search']
         # todo=Tasks.query.filter_by(title=title).first()
-        todo=db.session.query(Tasks).filter(func.lower(Tasks.title)==func.lower(title)).first()
+        todo=Tasks.find_task(title=title)
         # print(todo.title)
         found_list=True
         # return redirect(url_for('main.dashboard',search_list=search_list,found_list=found_list))
@@ -123,20 +106,38 @@ def searchtask(project):
         todo=Tasks.query.filter_by(title=title).first()
         return render_template('task.html',todo=todo,found_list=found_list,project=project)
 
+@app.route('/dashboard', methods=['GET','POST'])
+@login_required
+def dashboard():
+    if request.method=='POST':
+        title=request.form['title']    
+        todos=Dashboard(title=title,email=current_user.email)
+        Dashboard.add_todo(todos=todos)
+        print(current_user)
+        email=current_user.email
+        allTodo=Dashboard.query.filter(func.lower(Dashboard.email)==func.lower(current_user.email)).all()
+        return redirect(url_for('dashboard'))
+
+    else:
+        print(current_user.email)
+        allTodo=Dashboard.query.filter(func.lower(Dashboard.email)==func.lower(current_user.email)).all()
+        return render_template('dashboard.html', allTodo=allTodo)
+
+
 @app.route('/tasks/<project>', methods=['GET','POST'])
 @login_required
 def tasks(project):
     if request.method=='POST':
         title=request.form['title']
+        print(current_user.email)
         todo=Tasks(title=title,complete=False, project=project)
-        db.session.add(todo)
-        db.session.commit()
+        Tasks.add_todo(todos=todo)
         # incomplete=Tasks.query.filter_by(complete=False).all()
         # complete=Tasks.query.filter_by(complete=True).all()
         return redirect(url_for('tasks',project=project))
     else:
         # exists = db.session.query(Dashboard.title).filter_by(title=).first() is not None
-        exists = db.session.query(Dashboard).filter(func.lower(Dashboard.title)==func.lower(project)).first() is not None
+        exists = Tasks.check_tasks(title=Dashboard.title, project=project)
         if exists:
             incomplete=Tasks.query.filter_by(complete=False,project=project).all()
             complete=Tasks.query.filter_by(complete=True,project=project).all()
@@ -148,16 +149,14 @@ def tasks(project):
 @login_required
 def remove(sno):
         todo_list=Dashboard.query.filter_by(sno=sno).first()
-        db.session.delete(todo_list)
-        db.session.commit()
+        Tasks.remove_task(todo_list=todo_list)
         return redirect(url_for('dashboard'))
 
 @app.route('/delete/<project>/<int:sno>')
 @login_required
 def delete(sno,project):
         todo=Tasks.query.filter_by(sno=sno).first()
-        db.session.delete(todo)
-        db.session.commit()
+        Tasks.remove_task(todo)
         return redirect(url_for('tasks',project=project))
 
 @app.route('/complete/<project>/<int:sno>')
@@ -165,7 +164,7 @@ def delete(sno,project):
 def complete(sno,project):
     todo=Tasks.query.filter_by(sno=sno).first()
     todo.complete=True
-    db.session.commit()
+    Tasks.task_completed(status=todo.complete)
     return redirect(url_for('tasks',project=project))
     
 
@@ -174,7 +173,7 @@ def complete(sno,project):
 def incomplete(sno,project):
     todo=Tasks.query.filter_by(sno=sno).first()
     todo.complete=False
-    db.session.commit()
+    Tasks.task_completed(status=todo.complete)
     return redirect(url_for('tasks',project=project))
 
 @app.route('/update/<project>/<int:sno>',methods=['GET','POST'])
@@ -183,8 +182,7 @@ def updatetask(sno,project):
         title=request.form['title']
         todo=Tasks.query.filter_by(sno=sno).first()
         todo.title=title
-        db.session.add(todo)
-        db.session.commit()
+        Tasks.add_todo(todo)
         return redirect(url_for('tasks',project=project))
     else:
         todo=Tasks.query.filter_by(sno=sno).first()
@@ -204,6 +202,19 @@ def profile():
     print(email)
         # user.name=name
     
+
+    if request.method=="POST":
+        user=User.query.filter_by(id=id).first()
+        print(user)
+        name=request.form["name"]
+        email=request.form["email"]
+        print(name, email)
+        updateone(id=id,name=name,email=email)
+        return redirect(url_for('profile'))
+
+
+
+
     return render_template('profile.html', name=current_user.name, email=email)
 
     

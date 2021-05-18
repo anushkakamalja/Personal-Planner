@@ -2,6 +2,9 @@ from flask import Flask
 from config import Config
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+
+
 # from flask_mail import Mail
 
 # init SQLAlchemy so we can use it later in our models
@@ -12,6 +15,7 @@ app = Flask(__name__)
 app.config.from_object(Config)
 
 db.init_app(app)
+migrate = Migrate(app, db,render_as_batch=True)
 
 login_manager = LoginManager()
 login_manager.login_view = 'login'
@@ -26,7 +30,7 @@ def load_user(user_id):
 
 # mail = Mail(app)
 
-from app import routes
 
-# with app.app_context():
-#     db.create_all()
+with app.app_context():
+    db.create_all()
+    # app.app_context().push()
