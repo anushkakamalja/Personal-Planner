@@ -14,7 +14,9 @@
   </head>
   <body class="full">
     <section class="left">
-      <img src="/static/assets/icons/logo.png" alt="" />
+      <a href="{{url_for('index')}}">
+        <img src="/static/assets/icons/logo.png" alt="" />
+      </a>
     </section>
     <section class="right">
       <div class="login-container">
@@ -27,6 +29,11 @@
         <div class="box">
           {% with messages = get_flashed_messages() %} {% if messages %}
           <div class="notification is-danger">
+            <img
+              src="/static/assets/icons/error_48px.svg"
+              alt=""
+              draggable="false"
+            />
             {{ messages[0] }}. Go to
             <a href="{{ url_for('login') }}">login page</a>.
           </div>
@@ -45,9 +52,12 @@
               <input
                 type="password"
                 name="password"
-                id=""
+                id="pwd-field"
                 placeholder="Password"
               />
+            </div>
+            <div class="toggles">
+              <input type="checkbox" onclick="passwordToggle()" />Show Password
             </div>
             <button class="login-btn">Sign Up</button>
             <!-- <div class="strike">
@@ -65,5 +75,15 @@
         </div>
       </div>
     </section>
+    <script>
+      function passwordToggle() {
+        var x = document.getElementById('pwd-field');
+        if (x.type === 'password') {
+          x.type = 'text';
+        } else {
+          x.type = 'password';
+        }
+      }
+    </script>
   </body>
 </html>

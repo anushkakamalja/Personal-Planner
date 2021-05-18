@@ -89,7 +89,7 @@ form{
     height: 1.8rem;
 }
 
-input{
+input[type=text],input[type=password], input[type=email]{
     width: 80%;
     border-radius: 1rem;
     margin: 0.2rem;
@@ -158,4 +158,26 @@ input{
     max-height: 1.5rem;
     margin-right: 0.5rem;
 }
-  
+
+.toggles{
+    width: 80%;
+    padding: 0.5rem;
+}
+
+input[type=checkbox]{
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+    transform: scale(1.5);
+}
+
+.notification{
+    padding-bottom: 1rem;
+    height: 2.5rem;
+    background-color: rgba(255,0,0,0.8);
+    width: 42%;
+    /* display: block; */
+    margin: 0rem auto;
+    margin-bottom: 1.5rem;
+    border-radius: 1rem;
+    color: white;
+}

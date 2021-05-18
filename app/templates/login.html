@@ -5,13 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/static/css/login.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
+      rel="stylesheet"
+    />
     <title>Login</title>
   </head>
   <body class="full">
     <section class="left">
-      <img src="/static/assets/icons/logo.png" alt="" />
+      <a href="{{url_for('index')}}">
+        <img src="/static/assets/icons/logo.png" alt="" />
+      </a>
     </section>
     <div class="right">
       <div class="login-container">
@@ -19,34 +24,45 @@
           <a href="{{url_for('signup')}}">
             <button class="signup">Sign Up</button>
           </a>
-          
         </div>
         <h2>Login to continue</h2>
         <div class="box">
-          {% with messages = get_flashed_messages() %}
-          {% if messages %}
-              <div class="notification is-danger">
-                  {{ messages[0] }}
-              </div>
-          {% endif %}
-          {% endwith %}
-        <form  method="POST" action="/login">
-          <div class="email">
-            <img src="/static/assets/icons/envelope_48px.svg" alt="" />
-            <input type="text" name="email" id="" placeholder="Email" />
+          {% with messages = get_flashed_messages() %} {% if messages %}
+          <div class="notification is-danger">
+            <img
+              src="/static/assets/icons/error_48px.svg"
+              alt=""
+              draggable="false"
+            />{{ messages[0] }}
           </div>
-          <div class="password">
-            <img src="/static/assets/icons/password_48px.svg" alt="" />
-            <input type="password" name="password" id="" placeholder="Password" />
-          </div>
-          <button class="login-btn">Log In</button>
-          <div class="forgot">
-            <div></div>
-            <!--<div>
+          {% endif %} {% endwith %}
+          <form method="POST" action="/login">
+            <div class="email">
+              <img src="/static/assets/icons/envelope_48px.svg" alt="" />
+              <input type="text" name="email" id="" placeholder="Email" />
+            </div>
+            <div class="password">
+              <img src="/static/assets/icons/password_48px.svg" alt="" />
+              <input
+                type="password"
+                name="password"
+                id="pwd-field"
+                placeholder="Password"
+              />
+            </div>
+            <div class="toggles">
+              <input type="checkbox" onclick="passwordToggle()" />Show Password
+              <br />
+              <input type="checkbox" name="remember" id="" />Remember me
+            </div>
+            <button class="login-btn">Log In</button>
+            <div class="forgot">
+              <div></div>
+              <!--<div>
               <a href="">Forgot Password?</a>
             </div>-->
-          </div>
-          <!-- <div class="strike">
+            </div>
+            <!-- <div class="strike">
             <hr />
             <p>OR</p>
             <hr />
@@ -57,9 +73,19 @@
               <p>Log In with Google</p>
             </a>
           </div> -->
-        </form>
-      </div>
+          </form>
+        </div>
       </div>
     </div>
+    <script>
+      function passwordToggle() {
+        var x = document.getElementById('pwd-field');
+        if (x.type === 'password') {
+          x.type = 'text';
+        } else {
+          x.type = 'password';
+        }
+      }
+    </script>
   </body>
 </html>

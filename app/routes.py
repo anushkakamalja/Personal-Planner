@@ -28,6 +28,7 @@ def login_post():
     email = request.form.get('email')
     password = request.form.get('password')
     remember = True if request.form.get('remember') else False
+    # remember=False
 
     user = User.query.filter_by(email=email).first()
 
@@ -232,4 +233,4 @@ def profile():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('login'))
+    return redirect(url_for('index'))
