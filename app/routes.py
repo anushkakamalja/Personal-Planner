@@ -144,7 +144,7 @@ def delete(sno,project):
 def complete(sno,project):
     todo=Tasks.query.filter_by(sno=sno).first()
     todo.complete=True
-    Tasks.task_completed(status=todo.complete)
+    Tasks.task_completed(todo)
     return redirect(url_for('tasks',project=project))
     
 
@@ -153,7 +153,7 @@ def complete(sno,project):
 def incomplete(sno,project):
     todo=Tasks.query.filter_by(sno=sno).first()
     todo.complete=False
-    Tasks.task_completed(status=todo.complete)
+    Tasks.task_completed(todo)
     return redirect(url_for('tasks',project=project))
 
 @app.route('/update/<project>/<int:sno>',methods=['GET','POST'])

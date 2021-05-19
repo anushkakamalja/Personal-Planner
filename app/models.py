@@ -26,8 +26,8 @@ class User(UserMixin, db.Model):
             self.name = name
         if email is not None:
             self.email = email
-        db.session.commit()
-        
+        db.session.commit()       
+
 
 
 class Tasks(db.Model):
@@ -52,9 +52,9 @@ class Tasks(db.Model):
         db.session.delete(todo_list)
         db.session.commit()
     
-    def task_completed(status):
-        if status == True:
-            db.session.commit()
+    def task_completed(todo):
+        db.session.add(todo)
+        db.session.commit()
 
 
 def __repr__(self) -> str:
