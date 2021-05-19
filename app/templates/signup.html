@@ -27,6 +27,7 @@
         </div>
         <h2>Sign Up to join</h2>
         <div class="box">
+          <div class="alert-container">
           {% with messages = get_flashed_messages() %} {% if messages %}
           <div class="notification is-danger">
             <img
@@ -38,6 +39,7 @@
             <a href="{{ url_for('login') }}">login page</a>.
           </div>
           {% endif %} {% endwith %}
+        </div>
           <form method="POST" action="/signup">
             <div class="name">
               <img src="/static/assets/icons/test_account_48px.svg" alt="" />
