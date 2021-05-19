@@ -1,4 +1,4 @@
-from app import app
+from app import app, db
 from flask import render_template, request, url_for, redirect, abort
 import flask
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -85,9 +85,15 @@ def search():
 def searchtask(project):
     if request.method=='POST':
         title=request.form['Search']
-        todo=Tasks.query.filter_by(title=title).first()
-        found_list=True
-        return render_template('task.html',todo=todo,found_list=found_list,project=project)
+        # todo=db.session.query(Tasks).filter(func.lower(Tasks.title)==func.lower(title)).first()
+        todo=db.session.query(Tasks).filter(Tasks.title.like(title),Tasks.project.like(project)).first()
+        exist=todo is not None
+        if exist:
+            found_list=True
+            return render_template('task.html',todo=todo,found_list=found_list,project=project)
+        else:
+            found_list=False
+            return render_template('task.html',todo=todo,found_list=found_list,project=project)
     else:
         todo=Tasks.query.filter_by(title=title).first()
         return render_template('task.html',todo=todo,found_list=found_list,project=project)
