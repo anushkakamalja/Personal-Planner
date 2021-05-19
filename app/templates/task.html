@@ -49,8 +49,35 @@
   </span>
 </button>
 
-{% else %}
+{% if complete|length>0 %}
+<br>
+<h2 style="text-align: center;">Completed Tasks</h2>
+{% for todo in complete %}
+<button class="createnew tasklist">
+  <span>
+    <a href="/incomplete/{{project}}/{{todo.sno}}"
+      ><img
+        class="add-icon task-icon"
+        src="/static/assets/icons/round_50px.svg"
+        alt="" /></a
+    ><span class="btn-text" style="text-decoration: line-through"
+      >{{todo.title}}</span
+    ></span
+  >
+  <span class="btn-wrapper">
+    <div class="btn">
+      <img src="/static/assets/icons/trash_48px.svg" alt="" />
+      <a href="/delete/{{project}}/{{todo.sno}}">Delete</a>
+    </div>
+    <!-- <div class="btn">
+        <img src="/static/assets/icons/schedule_48px.svg" alt="" />
+        <a>Schedule</a>
+      </div> -->
+  </span>
+</button>
+{% endfor %} {% endif %}
 
+{% else %}
 
 {% for todo in incomplete %}
 <button class="createnew tasklist">

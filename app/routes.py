@@ -85,7 +85,7 @@ def search():
 def searchtask(project):
     if request.method=='POST':
         title=request.form['Search']
-        todo=Tasks.find_task(title=title)
+        todo=Tasks.query.filter_by(title=title).first()
         found_list=True
         return render_template('task.html',todo=todo,found_list=found_list,project=project)
     else:
