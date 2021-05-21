@@ -35,11 +35,21 @@
         <img src="/static/assets/icons/edit-profile_48px.svg" alt="" />
         <h2>EDIT PROFILE</h2>
       </div>
-      <p>Name: {{name}}</p>
-      <p>Email: {{email}}</p>
-      <a href="{{url_for('update_profile')}}">
-        <button>Edit</button>
-      </a>
+      <form action="" method="POST">
+        <div class="details">
+          <div class="name">
+            <label for="">Name</label>
+            <input type="text" name="name"/>
+          </div>
+          <div class="email">
+            <label for="">Email Address</label>
+            <input type="text" name="email" />
+          </div>
+        </div>
+        <div class="done">
+          <input type="submit" name="" id="" value="Done">
+        </div>
+      </form>
     </div>
   </body>
 </html>

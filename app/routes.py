@@ -169,15 +169,11 @@ def updatetask(sno,project):
         return render_template('updatetask.html',todo=todo, project=project)
 
 
-@app.route('/profile',methods=["GET","POST"])
+@app.route('/update_profile',methods=["GET","POST"])
 @login_required
-def profile():
-    id=current_user.id
-    user=User.query.filter_by(id=id).first()
-    name=user.name
-    email=user.email
-    password=user.password
+def update_profile():
     if request.method=="POST":
+        id=current_user.id
         user=User.query.filter_by(id=id).first()
         name=request.form["name"]
         email=request.form["email"]
@@ -187,8 +183,16 @@ def profile():
             email = user.email
         user.updateone(name=name,email=email)
         return redirect(url_for('profile'))
-    return render_template('profile.html', name=current_user.name, email=email)
+    return render_template('update_profile.html')
 
+@app.route('/profile')
+@login_required
+def profile():
+    id=current_user.id
+    user=User.query.filter_by(id=id).first()
+    name=user.name
+    email=user.email
+    return render_template('profile.html', name=current_user.name, email=email)
 
 @app.route('/logout')
 @login_required
