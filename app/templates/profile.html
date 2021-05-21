@@ -35,11 +35,13 @@
         <img src="/static/assets/icons/edit-profile_48px.svg" alt="" />
         <h2>EDIT PROFILE</h2>
       </div>
-      <p>Name: {{name}}</p>
-      <p>Email: {{email}}</p>
-      <a href="{{url_for('update_profile')}}">
-        <button>Edit</button>
-      </a>
+      <p class="profileinfo">Name: <input type="text" name="" id="" placeholder="{{name}}" readonly></p>
+      <p class="profileinfo">Email: <input type="text" name="" id="" placeholder="{{email}}" readonly></p>
+      <div class="edit-button-container">
+        <a href="{{url_for('update_profile')}}">
+          <button class="profile-edit-btn">Edit</button>
+        </a>
+      </div>
     </div>
   </body>
 </html>
